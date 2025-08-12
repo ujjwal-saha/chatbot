@@ -1,0 +1,8 @@
+streamlit
+openai
+langchain
+langgraph
+langsmith
+langchain_core
+langchain_openai
+langgraph-checkpoint-sqlite
