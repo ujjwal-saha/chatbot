@@ -52,7 +52,7 @@ def add_thread(thread_id):
         st.session_state['chat_threads'].append(thread_id)
 
 def load_conversation(thread_id):
-    return graph.get_state(config={"configurable": {"thread_id": thread_id}}).values['messages']    
+    return graph.get_state(config={"configurable": {"thread_id": thread_id}}).values.get('messages', [])   
 
 #-------------------- Session Setup -----------------
 
@@ -69,12 +69,14 @@ add_thread(st.session_state['thread_id'])
 
 #-------------------- Side bar -----------------------
 
-st.sidebar.title("Langgraph Chatbot")
+st.sidebar.title("Chatbot")
 if st.sidebar.button("New Chat"):
     reset_chat()
 st.sidebar.write("My Conversations")
+index=0
 for thread_id in st.session_state['chat_threads']:
-  if st.sidebar.button(str(thread_id)):
+  index+=1
+  if st.sidebar.button(f"Conversation{index}",key={thread_id}):
       st.session_state['thread_id']=thread_id
       messages=load_conversation(thread_id)
       temp_msg=[]
