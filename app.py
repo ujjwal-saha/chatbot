@@ -141,7 +141,10 @@ if user_input:
     #response=graph.invoke({'messages':HumanMessage(content=user_input)},config=CONFIG)
     #ai_message=response['messages'][-1].content
     #st.session_state['message_history'].append({'role':'assistant','content':ai_message})
-    CONFIG={"configurable": {"thread_id": st.session_state['thread_id']}}
+    CONFIG={"configurable": {"thread_id": st.session_state['thread_id']},
+            "metadata":{"thread_id":st.session_state['thread_id']},
+            "run_name":"chat_turn"
+            }
     #with st.spinner(text="In progress...", show_time=True):
     with st.chat_message('assistant'):
        ai_message= st.write_stream(
