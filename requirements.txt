@@ -6,3 +6,5 @@ langsmith
 langchain_core
 langchain_openai
 langgraph-checkpoint-sqlite
+langchain-tavily
+tavily-python
